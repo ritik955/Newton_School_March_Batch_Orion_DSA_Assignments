@@ -1,0 +1,48 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+		Scanner sc= new Scanner(System.in);
+String str= sc.nextLine();
+ str = removeOddIndexCharacters(str);
+  char[] ch = new char[str.length()];
+  
+        // Copying character by character into array
+        // using for each loop
+        for (int i = 0; i < str.length(); i++) {
+            ch[i] = str.charAt(i);
+        }
+        for (char c : ch) {
+            System.out.print(c+" ");
+        }
+      // System.out.println(str);                      // Your code here
+
+	}
+
+	static String removeOddIndexCharacters(
+        String s)
+    {
+  
+        // Stores the resultant string
+        String new_string = "";
+  
+        for (int i = 0; i < s.length(); i++) {
+  
+            // If the current index is odd
+            if (i % 2 == 1)
+  
+                // Skip the character
+                continue;
+  
+            // Otherwise, append the
+            // character
+            new_string += s.charAt(i);
+        }
+  
+        // Return the modified string
+        return new_string;
+    }
+}

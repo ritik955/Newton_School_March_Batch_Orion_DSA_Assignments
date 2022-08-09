@@ -1,0 +1,48 @@
+// Prefix Array Maximum Stock Profit
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        long[] a = new long[n];
+
+        for(int i=0; i<n; i++)
+            a[i] = sc.nextLong();
+
+
+
+        long[] left = new long[n];
+        long[] right = new long[n+1];
+
+        long m;
+
+        //left
+        m = a[0];
+        for(int i=1;i<n;i++){
+            m = Math.min(m, a[i]);
+
+            left[i] = Math.max(a[i]-m, left[i-1]);
+        }
+
+        //Right
+        m = a[n-1];
+        for(int i=n-2;i>=0;i--){
+            m = Math.max(m,a[i]);
+
+            right[i] = Math.max(m-a[i], right[i+1]);
+        }
+
+
+        long ans=0;
+        for(int i=0;i<n;i++){
+            ans = Math.max(ans, left[i] + right[i+1]);
+        }
+
+
+        System.out.println(ans);
+    }
+
+ }

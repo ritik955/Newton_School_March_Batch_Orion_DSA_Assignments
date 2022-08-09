@@ -1,0 +1,44 @@
+/*
+class Node {
+    Node next;
+    int val;
+
+    Node(int val) {
+        this.val = val;
+        next = null;
+    }
+}
+*/
+public static int maxChocolates(Node head) {
+Node temp=head;
+    int count=0;
+    while(temp!=null){
+        temp=temp.next;
+        count++;
+    }
+    int n=count/2;
+    temp=head;
+    while(n>0){
+        temp=temp.next;
+        n--;
+    }
+    Node p=temp.next;
+    temp.next=null;
+    Node h;
+    while (p!=null){
+         h=p.next;
+        p.next=temp;
+         temp=p;
+          p=h;
+    }
+    n=count/2;
+    int max=0;
+    while(n>0){
+        max=Math.max(max,head.val+temp.val);
+        temp=temp.next;
+        head=head.next;
+        n--;
+    }
+        return max;
+        
+}

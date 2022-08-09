@@ -1,0 +1,75 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // Scanner sc = new Scanner(System.in);
+        int tc = Integer.parseInt(br.readLine());
+        int arr [] = new int [1000000];
+
+        while(tc > 0){
+            tc--;
+			String [] str1 = br.readLine().split("\\s+"); 
+			String [] str2 = br.readLine().split("\\s+");
+            int ArrSize = Integer.parseInt(str1[0]);
+            int k = Integer.parseInt(str1[1]);
+            // int [] arr = new int[ArrSize];
+
+            for(int i=0; i<ArrSize; i++){
+                arr[i] = Integer.parseInt(str2[i]);
+            }
+            // int sum = 0;
+            // int count = 0;
+            // for(int i=0; i<ArrSize; i++){
+            //     for(int j=i; j<ArrSize; j++){
+            //         for(int k=i; k<=j; k++){
+            //             sum += arr[k];
+            //         }
+            //         if(sum == K){
+            //             if(count <= j - i + 1){
+			// 				count = j - i + 1;
+			// 			}
+            //         }
+            //         sum = 0;
+            //     }
+            // }
+				// System.out.println(count);
+
+
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+             int sum = 0, maxLen = 0;
+ 
+             // traverse the given array
+             for (int i = 0; i < ArrSize; i++) {
+                 
+                  // accumulate sum
+                  sum += arr[i];
+                 
+                  // when subarray starts from index '0'
+                  if (sum == k)
+                      maxLen = i + 1;
+ 
+                  // make an entry for 'sum' if it is
+                  // not present in 'map'
+                  if (!map.containsKey(sum)) {
+                      map.put(sum, i);
+                  }
+ 
+                  // check if 'sum-k' is present in 'map'
+                  // or not
+                  if (map.containsKey(sum - k)) {
+                       
+                      // update maxLength
+                      if (maxLen < (i - map.get(sum - k)))
+                          maxLen = i - map.get(sum - k);
+                  }
+             }
+                    System.out.println(maxLen);
+        }
+
+    }
+}

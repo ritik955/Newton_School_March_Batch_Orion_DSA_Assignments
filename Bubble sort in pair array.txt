@@ -1,0 +1,28 @@
+/*class  Pair { 
+    int x; 
+    int y; 
+  
+    // Constructor 
+public  Pair(int x, int y) 
+    { 
+        this.x = x; 
+        this.y = y; 
+    } 
+} 
+*/
+
+ static Pair[] SortPair(Pair arr[], int n) 
+    { 
+        // Comparator to sort the pair according to second element 
+        Arrays.sort(arr, new Comparator<Pair>() { 
+           public int compare(Pair p1, Pair p2) 
+            { 
+                if(p1.x==p2.x){
+                    return p2.y-p1.y;
+                }
+                return p2.x-p1.x;
+            } 
+        });
+        
+        return arr;
+	}

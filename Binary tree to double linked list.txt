@@ -1,0 +1,33 @@
+/*
+class Node {
+    int data;
+    Node left;
+    Node right;
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+} 
+static  Node head =null;// head node for double linked list
+*/
+static Node tail=null;
+static void BToDLL(Node root)  
+    { 
+       //Enter your code here
+       
+       if(root==null){
+           return;
+       }
+       //Node prev=null;
+       BToDLL(root.left);
+       if(head==null){
+         head=tail=root;
+       }else{
+          tail.right=root;
+          root.left=tail;
+          tail=root;
+       }
+       BToDLL(root.right);
+
+    }

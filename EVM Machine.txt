@@ -1,0 +1,42 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args)throws IOException {
+                      // Your code here
+                      InputStreamReader r=new InputStreamReader(System.in);
+                      BufferedReader sc=new BufferedReader(r);
+                      HashMap<String,String> hm= new HashMap<>();
+                      HashMap<String,Integer> sm= new HashMap<>();
+                      String v=sc.readLine();
+                      int t =0;
+                      int n =Integer.parseInt(v);
+                      for(int j=0;j<n;j++){
+                          String b=sc.readLine();
+                            String[] numbers=b.split(" ");
+                            String[] x=new String[numbers.length];
+                            for(int i=0;i<2;i++)
+                            {
+                                x[i]=numbers[i];
+                            }
+                          if(!hm.containsKey(x[0])){
+                            hm.put(x[0],x[1]);
+                            if(sm.containsKey(x[1])){
+                                sm.put(x[1] ,1+sm.get(x[1]));
+                                // System.out.println(sm.key());
+                            }else{
+                                sm.put(x[1],1);
+                            }
+                        }
+                      }
+                    TreeMap<String, Integer> sorted = new TreeMap<>();// Copy all data from hashMap into TreeMap
+                    sorted.putAll(sm);
+                    int maxValueInMap=(Collections.max(sm.values()));  // This will return max value in the Hashmap
+                    for (String key: sorted.keySet()){
+                        if (sm.get(key)==maxValueInMap)
+                            System.out.println(key+ " " + sorted.get(key));     // Print the key with max value
+            }
+    }
+}

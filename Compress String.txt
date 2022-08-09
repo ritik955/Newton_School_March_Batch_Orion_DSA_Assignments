@@ -1,0 +1,31 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+	Scanner sc=new Scanner(System.in);
+	int t=Integer.parseInt(sc.nextLine());
+	while(t-- >0)
+	{
+		String s=sc.nextLine();
+		String res="";
+		int i=0;
+		while(i<s.length())
+		{
+			int c=1;
+			int j=i+1;
+			while(j<s.length() && s.charAt(i)==s.charAt(j) )
+			{
+				c++;
+				j++;
+			}
+			res+=Character.toString(s.charAt(i))+Integer.toString(c);
+			i=j;
+		}
+		System.out.println(res);
+	}
+	}
+}

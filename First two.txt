@@ -1,0 +1,15 @@
+static int firstTwo(int N){
+      int rev =0;
+    while(N>99)
+    {
+      N=N/10;
+    }
+    while(N>0)
+    {
+       int  x=N%10;
+        
+      rev= rev*10+x;
+      N=N/10;
+    }
+     return rev;
+}

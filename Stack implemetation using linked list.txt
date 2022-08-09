@@ -1,0 +1,40 @@
+/*  
+    
+class Node {
+    Node next;
+    int val;
+
+    Node(int val) {
+        this.val = val;
+        next = null;
+       
+    }
+}
+ */
+
+ Node top = null;
+public void push(int x){
+//enter your code here
+  Node node=new Node(x);
+  node.next=top;
+  top=node;
+}
+
+public void pop(){
+//enter your code here
+   if(top==null){
+       return;
+   }
+   Node prev=top.next;
+   top.next=null;
+   top=prev;
+}
+
+public void top(){
+//enter your code here
+   if(top==null){
+       System.out.println("0");
+       return;
+   }
+   System.out.println(top.val);
+}

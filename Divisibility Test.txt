@@ -1,0 +1,57 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+public class Main
+{
+	public static void isDivisibleBy30(String num)
+	{
+		// A number is divisible by 30 when satisfies two conditions.
+		// ➀ is divisible by 10.
+		// ➁ is divisible by 3.
+		boolean result = false;
+		int n = num.length();
+		if (n == 1 && num.charAt(0) == '0')
+		{
+			// When number is zero
+			result = true;
+		}
+		else if (n > 1)
+		{
+			// Check condition 1
+			if (num.charAt(n - 1) == '0')
+			{
+				// When number is divisible by 10
+				// 2nd condition check number is divisible by 3 or not
+				int sum = 0;
+				// Calculate sum of all digit
+				for (int i = 0; i < n; ++i)
+				{
+					sum += (num.charAt(i) - 48);
+				}
+				if (sum % 3 == 0)
+				{
+					// When number is divisible by 3
+					result = true;
+				}
+			}
+		}
+		if (result == true)
+		{
+			System.out.println("Yes");
+		}
+		else
+		{
+			System.out.println("No");
+		}
+	}
+	public static void main(String[] args)
+	{
+	Scanner sc = new Scanner(System.in);
+	String a = sc.nextLine();
+
+	 isDivisibleBy30(a);
+		
+	}
+}

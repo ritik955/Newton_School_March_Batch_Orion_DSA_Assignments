@@ -1,0 +1,30 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		long Ax = sc.nextLong();
+		long Ay = sc.nextLong();
+		long Bx = sc.nextLong();
+		long By = sc.nextLong();
+		long Cx = sc.nextLong();
+		long Cy = sc.nextLong();
+		long D1 = (long)Math.pow(Bx-Ax, 2)+(long)Math.pow(By-Ay, 2);
+		long D2 = (long)Math.pow(Cx-Bx, 2)+(long)Math.pow(Cy-By, 2);
+		if(D1!=D2)
+		{
+			System.out.println("No");
+		}
+		else if((Bx==(Ax+Cx)/2.0) && (By==(Ay+Cy)/2.0))
+		{
+			System.out.println("No");
+		}
+		else
+		{
+			System.out.println("Yes");
+		}
+	}
+}

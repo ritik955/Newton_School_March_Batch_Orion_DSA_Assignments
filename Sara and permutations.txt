@@ -1,0 +1,30 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int [] arr = new int[n];
+		int [] indexarray = new int[100001];
+		for(int i=0;i<n;i++){
+			arr[i] = sc.nextInt();
+			//form an array for indices
+			indexarray[arr[i]] = i;
+		}
+		int l = Integer.MAX_VALUE;
+		int r = Integer.MIN_VALUE;
+		for(int k=1;k<=n;k++){
+		    l = Math.min(l,indexarray[k]);
+			r = Math.max(r,indexarray[k]);
+			if(r-l==k-1){
+				System.out.print("1 ");
+			}
+			else{
+				System.out.print("0 ");
+			}
+		}
+	}
+}

@@ -1,0 +1,38 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+
+               class Main {
+	public static void main (String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+	//Scanner sc = new Scanner( System.in);
+	//int t = sc.nextInt();
+	for(int i= 0; i<n;i++)
+	{
+		String []str=br.readLine().split(" ");
+		long a = Long.parseLong(str[0]);
+		long b = Long.parseLong(str[1]);
+		long k = Long.parseLong(str[2]);
+		System.out.println(AndOrOperation(a,b,k));
+	}
+}
+	public static long AndOrOperation(long a,long b,long k)
+	{
+		long	res =a;
+		for(long i= 1;i<=Math.cbrt(k);i++)
+        {	
+			if(i % 2 == 1)
+			{
+				res=(res & b);
+			}	
+			else 
+			{
+				res=(res | b);
+			}																																																									
+		}
+		  return res;
+	}
+}

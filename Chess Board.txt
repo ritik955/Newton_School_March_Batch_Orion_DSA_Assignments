@@ -1,0 +1,41 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        BufferedReader br = null;
+        try{
+        br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        int [][] A = new int[1000][1000];
+        int i, j;
+
+            int tot_index = 0;
+            int one = 0;
+            int zero = 0;
+            for(i=0; i<N; i++){
+                String [] line = br.readLine().split("\\s+");
+                for(j=0; j<N; j++) {
+                    A[i][j] = Integer.parseInt(line[j]);
+                    tot_index = (i + j)%2;
+            // If Row + Col is Divisible by 2 and its Black or Not
+                    if(tot_index == A[i][j]) {
+                    // Repaint Black Ones to White
+                        zero++;
+                    }
+                    else {
+            // Repaint White Ones to Black
+                        one++;
+                    }
+                }
+            }
+            int mincell = Math.min(one,zero);
+            System.out.print(mincell);
+        }
+        catch(Exception e) {
+            return;
+        }
+    }
+}

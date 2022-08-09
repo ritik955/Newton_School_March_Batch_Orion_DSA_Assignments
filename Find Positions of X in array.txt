@@ -1,0 +1,40 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+        // Your code here
+		Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+
+		int j=0;
+        for(j=0; j<t; j++){
+            
+        int n = sc.nextInt();
+		int searchvalue= sc.nextInt();
+        int a[]= new int[n];
+        int pos = -1;
+        
+        for(int i=0; i<n; i++){
+            a[i]= sc.nextInt();
+        }
+
+		for(int i=0; i<n; i++){
+            if(a[i]==searchvalue){
+                pos = i;
+                System.out.print(pos+ " " );
+                
+             }
+        }
+		if(pos==-1){
+            
+            System.out.print("Not found");
+        }
+        System.out.println();
+		}
+
+
+	}
+}

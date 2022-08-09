@@ -1,0 +1,9 @@
+// python code hai 
+//so first change the compiler from java to python
+
+def SuperPrimes(N):
+  a=[]
+  for i in range(2,N+1):
+    if(i*2>N):
+      a.append(i)
+  return a

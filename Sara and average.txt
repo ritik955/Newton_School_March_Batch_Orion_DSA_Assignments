@@ -1,0 +1,38 @@
+// Better Structured using Less For Loops
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      // Your code here
+
+        Scanner sc = new Scanner(System.in); 
+
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+
+        int[] psum = new int[n];
+
+        for(int i=0; i<n;i++){
+            int x = sc.nextInt();
+
+            if(i == 0)
+                psum[i] = x;
+            else
+                psum[i] = psum[i-1] + x;
+
+
+            int avg = 0;
+
+            if(i<k)
+                avg = psum[i]/(i+1);
+            else
+                avg = (psum[i] - psum[i-k]) / k;
+            System.out.print(avg + " ");
+        }
+
+    }
+}

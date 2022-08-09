@@ -1,0 +1,59 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+		Scanner sc = new Scanner(System.in);
+		int k = sc.nextInt();
+		// int l = 1;
+		// for (int i=1; i<=k; i++){
+		// 	l = l*2;
+		// }
+		
+		int[] arr = new int[(int)Math.pow(2,k)];
+		
+		
+		for (int i=0; i<arr.length; i++){
+			arr[i] = sc.nextInt();
+			
+		}
+		
+		Winsupporter(arr);
+	
+
+	}
+	 public static void Winsupporter(int[] abrr){
+		 
+	 if(abrr.length == 1){
+	     System.out.print(abrr[0]);
+	     return;
+	    }
+		else{
+       
+			int[] Addsup = new int[abrr.length/2];
+			int[] winner = new int[abrr.length/2];
+			
+
+			for (int i=0; i<abrr.length-1; i+=2){
+				if(abrr[i] >= abrr[i+1]){
+					winner[i/2] = abrr[i];
+					Addsup[i/2] = abrr[i+1];
+					
+				}
+				else{
+					winner[i/2] = abrr[i+1];
+					Addsup[i/2] = abrr[i];
+					
+				}
+			}
+			for(int i=0; i<Addsup.length-1; i+=2){
+				winner[i] = winner[i] + Addsup[i+1];
+				winner[i+1]= winner[i+1] + Addsup[i];
+			}
+			Winsupporter(winner);
+		} 
+	}
+}

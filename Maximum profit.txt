@@ -1,0 +1,38 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+	Scanner sc=new Scanner(System.in);
+	int n=sc.nextInt();
+	int x=sc.nextInt();
+	long maxp[]=new long[n+1];
+	while(x-->0)
+	{
+		int a=sc.nextInt();
+		int b=sc.nextInt();
+		int c=sc.nextInt();
+		for(int i=a;i<=b;i++)
+		maxp[i]+=c;
+	}
+
+	System.out.println(kadanesAlo(maxp,n+1));
+	}
+	static long kadanesAlo(long a[],int n)
+	{
+		long maxSum=Long.MIN_VALUE;
+		long currSum=0;
+		for(int i=1;i<n;i++)
+		{
+			currSum+=a[i];
+			if(maxSum<currSum)
+			maxSum=currSum;
+			if(currSum<0)
+			currSum=0;
+		}
+		return maxSum;
+	}
+}

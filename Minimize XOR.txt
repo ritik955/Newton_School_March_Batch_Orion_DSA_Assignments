@@ -1,0 +1,29 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+class Main {
+    static int minXOR(int [] A, int N) 
+    {
+        Arrays.sort(A);  // for sorting the array
+        int minimumxor = Integer.MAX_VALUE;
+        int value = 0;
+        for(int i=0; i<N-1; i++) {
+            value = A[i]^A[i+1];
+            minimumxor = Math.min(minimumxor, value);  // to find minimum pair
+        }
+        return minimumxor;
+    }
+
+    public static void main (String[] args) 
+    {
+        Scanner input = new Scanner(System.in);
+        int N = input.nextInt();
+        int [] A = new int[N];
+
+        for(int i=0; i<N; i++) {
+            A[i] = input.nextInt();
+        }
+        
+        System.out.println(minXOR(A, N));
+    }
+}

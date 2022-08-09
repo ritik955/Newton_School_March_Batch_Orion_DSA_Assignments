@@ -1,0 +1,49 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+	//saumya 
+	//aamsuy
+    //ansh
+	String res[]={"Siblings","Friends","Love","Affection","Marriage","Enemy"};
+	Scanner sc=new Scanner(System.in);
+	String s=sc.nextLine();
+	String s1=sc.nextLine();
+	char c[]=s.toCharArray();
+	char c1[]=s1.toCharArray();
+	Arrays.sort(c);
+	Arrays.sort(c1);
+	/*for(int i=0;i<c.length;i++)
+	System.out.print(c[i]+" ");
+	System.out.println();
+	for(int i=0;i<c1.length;i++)
+	System.out.print(c1[i]+" ");*/
+	int i=0,j=0,c11=0;
+	while(i<c.length && j<c1.length)
+	{
+		int ii=c[i];
+		int jj=c1[j];
+		if(ii==jj)
+		{
+			c11++;
+			i++;
+			j++;
+		}
+		else if(ii<jj)
+		i++;
+		else
+		j++;
+	}
+//	System.out.println(c);
+	//System.out.println(c1);
+	int sl=c.length+c1.length;
+	sl-=2*c11;
+//	System.out.println(c11);
+	System.out.println(res[sl%6]);
+	
+	
+	}
+}

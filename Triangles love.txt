@@ -1,0 +1,169 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+static int dx[] = { -1, 0, 1, 0 };
+static int dy[] = { 0, 1, 0, -1 };
+ 
+static boolean ifRight(int x1, int y1,
+                       int x2, int y2,
+                       int x3, int y3)
+{
+    int a = ((x1 - x2) * (x1 - x2)) +
+            ((y1 - y2) * (y1 - y2));
+ 
+    int b = ((x1 - x3) * (x1 - x3)) +
+            ((y1 - y3) * (y1 - y3));
+ 
+    int c = ((x2 - x3) * (x2 - x3)) +
+            ((y2 - y3) * (y2 - y3));
+ 
+    if ((a == (b + c) && a != 0 && b != 0 && c != 0) ||
+        (b == (a + c) && a != 0 && b != 0 && c != 0) ||
+        (c == (a + b) && a != 0 && b != 0 && c != 0))
+    {
+        return true;
+    }
+    return false;
+}
+
+static void isValidCombination(int x1, int y1,
+                               int x2, int y2,
+                               int x3, int y3)
+{
+    int x, y;
+    boolean possible = false;
+    if (ifRight(x1, y1, x2, y2, x3, y3))
+    {
+        System.out.print("Right");
+        return;
+    }
+    else
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            x = dx[i] + x1;
+            y = dy[i] + y1;
+ 
+            if (ifRight(x, y, x2, y2, x3, y3))
+            {
+                System.out.print("Special");
+                return;
+            }
+            x = dx[i] + x2;
+            y = dy[i] + y2;
+ 
+            if (ifRight(x1, y1, x, y, x3, y3))
+            {
+                System.out.print("Special");
+                return;
+            }
+            x = dx[i] + x3;
+            y = dy[i] + y3;
+ 
+            if (ifRight(x1, y1, x2, y2, x, y))
+            {
+                System.out.print("Special");
+                return;
+            }
+        }
+    }
+    if (!possible)
+        System.out.println("Simple");
+}
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		               
+		   int Ax=sc.nextInt();
+           int Ay=sc.nextInt();
+		   
+		   int Bx=sc.nextInt();
+           int By=sc.nextInt();
+		   
+		   int Cx=sc.nextInt();
+           int Cy=sc.nextInt();
+
+		   isValidCombination(Ax, Ay, Bx, By, Cx, Cy);
+	}
+}
+//class Main {
+	//public static void main (String[] args) {
+      //  Scanner sc = new Scanner(System.in);
+	//	long Ax = sc.nextLong();
+	//	long Ay = sc.nextLong();
+	//	long Bx = sc.nextLong();
+	//	long By = sc.nextLong();
+	//	long Cx = sc.nextLong();
+	//	long Cy = sc.nextLong();
+		
+		//long AB =(long)Math.pow(Bx-Ax, 2) + (long)Math.pow(By-Ay, 2);
+		//long BC = (long)Math.pow(Cx-Bx, 2) + (long)Math.pow(Cy-By, 2);
+	   // long CA = (long)Math.pow(Cx-Ax, 2) + (long)Math.pow(Cy-Ay, 2);
+
+		//long AB1 = (long)Math.pow(Bx-(Ax+1), 2) + (long)Math.pow(By-Ay, 2);
+		//long BC1 = (long)Math.pow(Cx-Bx, 2) + (long)Math.pow(Cy-By, 2);
+	    //long CA1 = (long)Math.pow(Cx-(Ax+1), 2) + (long)Math.pow(Cy-Ay, 2);
+
+		//long AB2 = (long)Math.pow(Bx-Ax, 2) + (long)Math.pow(By-(Ay+1), 2);
+		//long BC2 = (long)Math.pow(Cx-Bx, 2) + (long)Math.pow(Cy-By, 2);
+	    //long CA2 = (long)Math.pow(Cx-Ax, 2) + (long) Math.pow(Cy-(Ay+1), 2);
+
+		//long AB3 = (long)Math.pow((Bx+1)-Ax, 2) + (long)Math.pow(By-Ay, 2);
+		//long BC3 = (long)Math.pow(Cx-(Bx+1), 2) + (long)Math.pow(Cy-By, 2);
+	    //long CA3 = (long)Math.pow(Cx-Ax, 2) + (long)Math.pow(Cy-Ay, 2);
+
+		//long AB4 = (long)Math.pow(Bx-Ax, 2) + (long)Math.pow((By+1)-Ay, 2);
+		//long BC4 = (long)Math.pow(Cx-Bx, 2) + (long)Math.pow(Cy-(By+1), 2);
+	    //long CA4 = (long)Math.pow(Cx-Ax, 2) + (long)Math.pow(Cy-Ay, 2);
+
+		//long AB5 = (long)Math.pow(Bx-Ax, 2) + (long)Math.pow(By-Ay, 2);
+		//long BC5 = (long)Math.pow((Cx+1)-Bx, 2) +(long) Math.pow(Cy-By, 2);
+	    //long CA5 = (long)Math.pow((Cx+1)-Ax, 2) + (long)Math.pow(Cy-Ay, 2);
+
+		//long AB6 = (long)Math.pow(Bx-Ax, 2) + (long)Math.pow(By-Ay, 2);
+		//long BC6 = (long)Math.pow(Cx-Bx, 2) + (long)Math.pow((Cy+1)-By, 2);
+	    //long CA6 = (long)Math.pow(Cx-Ax, 2) + (long)Math.pow((Cy+1)-Ay, 2);
+		
+	    //if((AB>0 && BC>0 && CA>0) && (AB==(BC+CA) || BC==(AB+CA) || CA==(AB+BC)))
+//		{
+//			System.out.println("Right");
+//		}
+//		
+//		else if((AB1>0 && BC1>0 && CA1>0) && (AB1==(BC1+CA1) || BC1==(AB1+CA1) || CA1==(AB1+BC1)))
+//		{
+//			System.out.println("Special");
+//		}
+//		
+//		else if((AB2>0 && BC2>0 && CA2>0) && (AB2==(BC2+CA2) || BC2==(AB2+CA2) || CA2==(AB2+BC2)))
+//		{
+//			System.out.println("Special");
+//		}
+//		
+//	    else if((AB3>0 && BC3>0 && CA3>0) && (AB3==(BC3+CA3) || BC3==(AB3+CA3) || CA3==(AB3+BC3)))
+//		{
+//			System.out.println("Special");
+//		}
+//		
+//		else if((AB4>0 && BC4>0 && CA4>0) && (AB4==(BC4+CA4) || BC4==(AB4+CA4) || CA4==(AB4+BC4)))
+//		{
+//			System.out.println("Special");
+//		}
+//		
+//	    else if((AB5>0 && BC5>0 && CA5>0) && (AB5==(BC5+CA5) || BC5==(AB5+CA5) || CA5==(AB5+BC5)))
+//		{
+//			System.out.println("Special");
+//		}
+//	    
+//	    else if((AB6>0 && BC6>0 && CA6>0) && (AB6==(BC6+CA6) || BC6==(AB6+CA6) || CA6==(AB6+BC6)))
+//		{
+//			System.out.println("Special");
+//		}
+//		else if()
+//		{
+//			System.out.println("Simple");
+//		}
+       
+//	}
+//}

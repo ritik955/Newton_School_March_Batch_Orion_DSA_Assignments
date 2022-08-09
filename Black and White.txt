@@ -1,0 +1,10 @@
+// c++ code hai 
+//so first change the compiler from java to c++
+
+
+#include <bits/stdc++.h> // header file includes every Standard library
+using namespace std;
+
+
+#include<iostream>
+int main(){long long n,x,y,i;for(std::cin>>n;n--;)std::cin>>x>>y,i=(x*2-2)*(y-2<0?0:y-2)+(y*2-2)*(x-2<0?0:x-2)<<1,x*=y,std::cout<<x*x-x-i<<"\n";return 0;}

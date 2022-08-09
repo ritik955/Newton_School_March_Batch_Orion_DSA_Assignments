@@ -1,0 +1,23 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+class Main {
+public static void main (String[] args) {
+                      // Your code here
+    Scanner sc=new Scanner(System.in);
+	int n=sc.nextInt();
+    long[]x=new long[n];
+	long[]y=new long[n];
+    for(int i=0;i<n;i++){
+        x[i]=sc.nextInt();
+        y[i]=sc.nextInt();
+        }
+    Arrays.sort(x);
+    Arrays.sort(y);
+int mid = (int)(Math.ceil((double)(n / 2.0) - 1));
+  System.out.println(x[mid]+" "+y[mid]);
+            
+            
+	}
+
+}
